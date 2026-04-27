@@ -40,5 +40,5 @@ pytest -v
 
 **Запуск автотестов и создание HTML-отчета о покрытии**
 ```bash
-pytest --cov=praktikum --cov-report=html`
+pytest --cov=praktikum --cov-report=html
 ```
