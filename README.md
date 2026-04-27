@@ -11,14 +11,34 @@
 ### Структура проекта
 
 - `praktikum` - пакет, содержащий код программы
-- `tests` - пакет, содержащий тесты, разделенные по классам. Например, `bun_test.py`, `burger_test.py` и т.д.
+- `tests` - пакет, содержащий тесты, разделенные по классам
 
 ### Запуск автотестов
 
-**Установка зависимостей**
+**Установка виртуального окружения и зависимостей**
 
-> `$ pip install -r requirements.txt`
+```bash
+# Создание виртуального окружения
+python3 -m venv venv
+
+# Активация виртуального окружения
+# На macOS/Linux:
+source venv/bin/activate
+# На Windows:
+venv\Scripts\activate
+
+# Установка зависимости
+pip install -r requirements.txt
+```
+
+
+**Запуск автотестов без генерации отчетов**
+
+```bash
+pytest -v
+```
 
 **Запуск автотестов и создание HTML-отчета о покрытии**
-
->  `$ pytest --cov=praktikum --cov-report=html`
+```bash
+pytest --cov=praktikum --cov-report=html`
+```
