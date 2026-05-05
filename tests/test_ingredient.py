@@ -7,29 +7,29 @@ from praktikum.ingredient_types import INGREDIENT_TYPE_SAUCE, INGREDIENT_TYPE_FI
 class TestIngredient:
     #Тесты для класса Ingredient
 
-    @pytest.mark.parametrize('ingredient_type, name, price', [
-        (INGREDIENT_TYPE_SAUCE, 'hot sauce', 100),
-        (INGREDIENT_TYPE_SAUCE, 'sour cream', 200.5),
-        (INGREDIENT_TYPE_FILLING, 'cutlet', 100),
-        (INGREDIENT_TYPE_FILLING, 'dinosaur', 0),
+    @pytest.mark.parametrize('price', [
+        100,
+        200.5,
+        0,
+        0.01,
     ])
-    def test_get_price_returns_price_from_constructor(self, ingredient_type, name, price):
-        ingredient = Ingredient(ingredient_type, name, price)
+    def test_get_price_returns_price_from_constructor(self, price):
+        ingredient = Ingredient(INGREDIENT_TYPE_SAUCE, 'hot sauce', price)
         assert ingredient.get_price() == price
 
-    @pytest.mark.parametrize('ingredient_type, name, price', [
-        (INGREDIENT_TYPE_SAUCE, 'hot sauce', 100),
-        (INGREDIENT_TYPE_FILLING, 'cutlet', 100),
-        (INGREDIENT_TYPE_FILLING, '', 0),
+    @pytest.mark.parametrize('name', [
+        'hot sauce',
+        'cutlet',
+        '',
     ])
-    def test_get_name_returns_name_from_constructor(self, ingredient_type, name, price):
-        ingredient = Ingredient(ingredient_type, name, price)
+    def test_get_name_returns_name_from_constructor(self, name):
+        ingredient = Ingredient(INGREDIENT_TYPE_SAUCE, name, price=100)
         assert ingredient.get_name() == name
 
-    @pytest.mark.parametrize('ingredient_type, name, price', [
-        (INGREDIENT_TYPE_SAUCE, 'hot sauce', 100),
-        (INGREDIENT_TYPE_FILLING, 'cutlet', 100),
+    @pytest.mark.parametrize('ingredient_type', [
+        INGREDIENT_TYPE_SAUCE,
+        INGREDIENT_TYPE_FILLING,
     ])
-    def test_get_type_returns_type_from_constructor(self, ingredient_type, name, price):
-        ingredient = Ingredient(ingredient_type, name, price)
+    def test_get_type_returns_type_from_constructor(self, ingredient_type):
+        ingredient = Ingredient(ingredient_type, 'hot sauce', price=100)
         assert ingredient.get_type() == ingredient_type
